@@ -7,14 +7,7 @@ and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
 Find the sum of the digits in the number 100!
 """
 
-def fact(n):
-    if n == 0:
-        return 0
-
-    if n == 1 :
-        return 1
-
-    return n * fact(n-1)
+from utils.fact import fact
 
 def sumDigits(s):
     ssum = 0
