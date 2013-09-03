@@ -24,34 +24,22 @@ func FermatFactor(num int) (float64, float64) {
 	return a - math.Sqrt(b), a + math.Sqrt(b)
 }
 
-func IncrementalSieve(num int) []int {
-	arraysize := num - 1
-	initarray := make([]int, arraysize)
-	for i := 0; i < arraysize; i++ {
-		initarray[i] = i + 2
-	}
-
-	k := 0
-	start := initarray[k]
-
-	for h := 0; h < int(math.Sqrt(float64(num))); h += 1 {
-		for i := k; i < arraysize; i += start {
-			if start == initarray[i] {
+// using an Incermental Sieve .
+// not great for big thresholds
+func PrimesSieve(num, threshold int) []int {
+	initarray := make([]int, 0)
+	skip := map[int]bool{}
+	for h := 2; h <= threshold; h += 1 {
+		for i := h; i < threshold; i += h {
+			if skip[i] {
 				continue
 			}
-			initarray[i] = 0
-		}
-		k += 1
-		for initarray[k] == 0 {
-			k += 1
-		}
-		start = initarray[k]
-	}
-	primes := make([]int, 0)
-	for i := 0; i < arraysize; i++ {
-		if initarray[i] != 0 {
-			primes = append(primes, initarray[i])
+			if h == i {
+				initarray = append(initarray, i)
+			} else {
+				skip[i] = true
+			}
 		}
 	}
-	return primes
+	return initarray
 }
