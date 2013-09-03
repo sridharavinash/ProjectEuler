@@ -26,7 +26,7 @@ func FermatFactor(num int) (float64, float64) {
 
 func IncrementalSieve(num int) []int {
 	arraysize := num - 1
-	initarray := make([]int, num-1)
+	initarray := make([]int, arraysize)
 	for i := 0; i < arraysize; i++ {
 		initarray[i] = i + 2
 	}
