@@ -75,7 +75,7 @@ func FermatFactor(num int) (float64, float64) {
 
 // using an Incermental Sieve .
 // not great for big thresholds
-func PrimesSieve(num, threshold int) []int {
+func PrimesSieve(threshold int) []int {
 	initarray := make([]int, 0)
 	skip := map[int]bool{}
 	for h := 2; h <= threshold; h += 1 {
