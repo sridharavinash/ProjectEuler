@@ -73,6 +73,10 @@ func FermatFactor(num int) (float64, float64) {
 	return a - math.Sqrt(b), a + math.Sqrt(b)
 }
 
+func NoOfPrimes(num float64) int {
+	return int(num / math.Log(num))
+}
+
 // using an Incermental Sieve .
 // not great for big thresholds
 func PrimesSieve(threshold int) []int {
